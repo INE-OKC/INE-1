@@ -31,7 +31,7 @@ function ConnectWallet() {
           <li className="block md:hover:bg-list-color md:pl-2 md:pt-3 md:mb-2 md:ml-2 hover:rounded-lg">
             <img src={explorepic} alt="homeicon" className="inline" />
             <span className="text-white font-medium text-sm ml-4 hidden md:inline">
-              <a href="/">Explore</a>
+              <a href="/explore">Explore</a>
             </span>
           </li>
           <hr className=" border-gray-500 hidden md:block" />

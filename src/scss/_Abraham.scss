@@ -6,8 +6,76 @@
 }
 .trendTitle {
   margin: 20px auto;
+}
+.message {
+  height: 100%;
+  width: 100%;
+  background: #000000;
+}
+.messageMain {
+  display: flex;
+  color: white;
+  justify-content: center;
+  gap: 20px;
+}
 
-  p {
-    margin: 30px 0px;
-  }
+.first .exp {
+  width: 270px;
+  height: 445px;
+  background: rgba(33, 35, 39, 0.6);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.first .exp div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  line-height: 22px;
+  color: #ffffff;
+  width: 229px;
+  height: 46px;
+  padding: 10px;
+}
+.first .exp div:hover {
+  background: rgba(189, 199, 195, 0.2);
+  border-radius: 10px;
+ 
+}
+.first .exp div img {
+  height: 15px;
+  width: 15px;
+}
+.first .searches {
+  width: 263px;
+  height: 50px;
+  background: rgba(33, 35, 39, 0.7);
+  border-radius: 50px;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+}
+.first .searches input {
+  background: none;
+  color: rgba(255, 255, 255, 0.2);
+  outline: none;
+}
+.first .searches input::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+}
+.second {
+  width: 484px;
+  height: 1389px;
+  background: rgba(33, 35, 39, 0.6);
+}
+.third {
+  width: 651px;
+  height: 1389px;
+  background: rgba(33, 35, 39, 0.6);
 }

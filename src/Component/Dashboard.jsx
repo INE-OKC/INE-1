@@ -104,7 +104,7 @@ function Dashboard() {
                 Experience lightning-fast, low-cost payments with OKTC Pay!
                 💸⚡{" "}
                 <span className="block mt-5 w-[10%]">
-                  #OkycPay #cryptopayments #fastandaffordable
+                  #OktcPay #cryptopayments #fastandaffordable
                 </span>
                 <span className="mt-3 block">
                   <img src={spaypic} alt="pic" />

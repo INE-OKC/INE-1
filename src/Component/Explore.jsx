@@ -54,7 +54,37 @@ function Explore() {
               </div>
 
                <div className="trendTitle">
-               <p className="oktcStyle text-white w-[95%]">#OKTC blockchain:</p>
+               <p className="oktcStyle text-white w-[95%]">#OKTC :</p>
+              <p className=" text-white w-[95%]">
+                Just bought my first $OKTC and I'm already loving the speed and
+                low fees! Excited to be a part of the OKTC community{" "}
+              </p>
+               </div>
+            </div>
+          </div>
+        
+        </div>
+        <div className="flex pt-6 pb-4 ">
+          <img src={bigmanpic} alt="pic" />
+          <input
+            type="text"
+            placeholder="Start a post"
+            className="w-full ml-3 bg-inherit rounded-3xl border border-search-text pl-4 text-xs"
+          />
+        </div>
+        <hr className=" border-gray-500" />
+        <div className=" mb-[7%] pb-[12%] md:pb-4 md:mb-3">
+          <div className="flex pt-10 md:pt-3">
+            <div className="w-full pt-2">
+              <div className="flex justify-between w-full">
+                <p>
+                  <span className="text-white text-lg">Trending For You</span>
+                </p>{" "}
+                <br />
+              </div>
+
+               <div className="trendTitle">
+               <p className="oktcStyle text-white w-[95%]">#OKTC :</p>
               <p className=" text-white w-[95%]">
                 Just bought my first $OKTC and I'm already loving the speed and
                 low fees! Excited to be a part of the OKTC community{" "}
