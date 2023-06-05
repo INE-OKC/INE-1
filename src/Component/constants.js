@@ -1,10 +1,10 @@
 
-const WalletConnectIcon = 'images/wallet/walletconnect.svg';
-const MetamaskIcon = 'images/wallet/metamask.svg';
-const TrustWalletIcon = 'images/wallet/trustwallet.svg';
-const Coin98 = 'images/wallet/coin98.svg';
-const CoinbaseWallet = 'images/wallet/coinbasewallet.svg';
-const BinanceWallet = 'images/wallet/bscwallet.svg';
+const WalletConnectIcon = '../assets/image/walletconnect.svg';
+const MetamaskIcon = '../assets/image/metamask.svg';
+const TrustWalletIcon = '../assets/image/trustwallet.svg';
+const Coin98 = ' ../assets/image/coin98.svg';
+const CoinbaseWallet = '../assets/image/coinbasewallet.svg';
+const BinanceWallet = '../assets/image/bscwallet.svg';
 
 
 export const wallets = [
