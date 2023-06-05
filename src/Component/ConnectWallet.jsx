@@ -5,64 +5,162 @@ import profilepic from '../assets/image/profileicon.png'
 import savingspic from '../assets/image/savingsicon.png'
 import messagepic from '../assets/image/messageicon.png'
 import { Link } from 'react-router-dom'
+import React from 'react'
+import { Container, Button } from 'react-bootstrap'
+import Modal from 'react-modal'
+import { wallets } from './constants'
+import { useState, useContext, useEffect } from 'react'
+import { useWeb3React } from '@web3-react/core'
+import { injected, walletconnector, bsc } from './connector'
+import {Buffer} from 'buffer';
+Buffer.from('anything','base64');
 
 function ConnectWallet() {
   return (
-    <div className="md:w-auto md:pt-5 fixed bottom-0 md:relative w-full bg-black md:bg-inherit md:px-2">
-      <div className="hidden md:block">
-        <input
-          type="text"
-          placeholder="Search..."
-          className="py-3 pl-4 bg-search-color text-white text-xs rounded-3xl w-[100%]"
-        />
-        <button className="ml-[-10%]">
-          <img src={searchpic} alt="searchicon" className="inline" />
-        </button>
-      </div>
-      <div className=" px-2 py-3  md:pt-0 md:mt-3 md:px-3 bg-dash-color md:w-[100%] md:rounded-lg md:pb-4 flex justify-between md:justify-start md:block">
-        <ul className="md:pt-2 flex w-[70%] justify-between md:w-auto md:block ">
-          <li className="block md:hover:bg-list-color md:pl-4 md:mb-2 md:ml-2 hover:rounded-lg md:pt-3">
-            <img src={homepic} alt="homeicon" className="inline md:pb-2" />
-            <span className="text-white font-medium text-sm ml-4 md:ml-4 hidden md:inline">
-              <a href="/">Home</a>
-            </span>
-          </li>
-          <hr className=" border-gray-500 hidden md:block" />
-          <li className="block md:hover:bg-list-color md:pl-2 md:pt-3 md:mb-2 md:ml-2 hover:rounded-lg">
-            <img src={explorepic} alt="homeicon" className="inline" />
-            <span className="text-white font-medium text-sm ml-4 hidden md:inline">
-              <a href="/explore">Explore</a>
-            </span>
-          </li>
-          <hr className=" border-gray-500 hidden md:block" />
-          <li className="block md:hover:bg-list-color md:pl-2 md:pt-3 md:mb-2 md:ml-2 hover:rounded-lg">
-            <img src={messagepic} alt="homeicon" className="inline" />
-            <span className="text-white font-medium text-sm ml-4 hidden md:inline">
-              <a href="/message">Messages</a>
-            </span>
-          </li>
-          <hr className=" border-gray-500 hidden md:block" />
-          <li className="block md:hover:bg-list-color md:pl-2 md:pt-3 md:mb-2 md:ml-2 hover:rounded-lg">
-            <img src={profilepic} alt="homeicon" className="inline" />
-            <span className="text-white font-medium text-sm ml-4 hidden md:inline">
-              <a href="/profile">Profile</a>
-            </span>
-          </li>
-          <hr className=" border-gray-500 hidden md:block" />
-          <li className="block md:hover:bg-list-color md:pl-1 md:pt-3 md:mb-2 md:ml-2 hover:rounded-lg">
-            <img src={savingspic} alt="homeicon" className="inline" />
-            <span className="text-white font-medium text-sm ml-4 hidden md:inline">
-              <Link to="/mysavings">My Savings</Link>
-            </span>
-          </li>
-          <hr className=" border-gray-500 hidden md:block" />
-        </ul>
-        <button className="bg-gradient-to-r from-button-start via-button-mid to-button-end md:mt-5 text-white md:font-medium py-2 md:px-4 md:text-sm rounded-md md:ml-[20%] text-xs px-1">
-          <a href="/connectwallet">Connect Wallet</a>
-        </button>
-      </div>
-    </div>
-  );
+
+
+const Cancel = '../assets/image/cancel.svg'
+
+const WalletConnect = () => {
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: '20%',
+      height: '500px',
+      borderRadius: '15px',
+      background: 'rgba(0, 0, 0, 0.95)',
+      paddingTop: '10px',
+      minWidth:'250px', 
+    },
+  }
+
+  Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.6)'
+  Modal.defaultStyles.overlay.zIndex = "1000000"
+
+  const [isOpen, setOpen] = useState(false)
+  const { account, chainId, activate, deactivate } = useWeb3React();
+  const supportNetworkId = 61;
+
+  const walletModalOpen = async () => {
+    setOpen(true)
+  }
+
+  const walletDisconnect = async () => {
+    deactivate();
+  }
+
+  const afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    // subtitle.style.color = '#f00';
+  }
+
+  const closeModal = () => {
+    setOpen(false)
+  }
+
+  const handleLogin = async (wname) => {
+
+    if (wname === 'Wallet Connect') { 
+      activate(walletconnector);
+    } else if (wname === 'Binance Wallet') {
+      activate(bsc)
+    } else {
+      await activate(injected);
+    }
+    setOpen(false)
+  }
+
+  useEffect(() => {
+		(async () => {
+			if (account && chainId ) {
+            // if(supportNetworkId !== chainId)
+            // {
+            //   
+            //   deactivate();
+            // }
+              
+
+        if (supportNetworkId !== chainId) {
+           alert("Sorry, You are not in OKTC testnet now. Please try again after change your network. Thank you !");
+          if(window.confirm("Your current Network is unsupportable. Would you like to change it") == true)
+          {
+            console.log(supportNetworkId.toString(16));
+            try {
+              await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                  params: [{ chainId: '0x' + supportNetworkId.toString(16)}],
+                });
+            } catch (switchError) {
+              // This error code indicates that the chain has not been added to MetaMask.
+              if (switchError.code === 4902) {
+                alert('add this chain id')
+              }
+            }
+          }
+        }
+			}
+		})();
+	},[chainId, account]);
+
+  return (
+    <>
+      <Container>
+        {!account ? (
+          <div className="connect-wallet" onClick={walletModalOpen}>
+            Connect
+          </div>
+        ) : (
+          <div className="connect-wallet" onClick={walletDisconnect}>
+            {account.slice(0, 5) + '...' + account.slice(account.length-4, account.length)}
+          </div>
+        )}
+      </Container>
+      <Modal
+        isOpen={isOpen}
+        onAfterOpen={afterOpenModal}
+        closeModal={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+        onRequestClose={closeModal}
+      >
+        <div style={{ borderBottom: '1px solid silver', padding: '3px' }}>
+          <img
+            src={Cancel}
+            style={{
+              background: 'transparent',
+              width: '25px',
+              color: 'white',
+              border: '0',
+              float: 'right',
+            }}
+            onClick={closeModal}
+          />
+          <br />
+          <br />
+          Connect Wallet
+        </div>
+        <br />
+        {wallets.map((wallet) => (
+          <div
+            key={wallet.name}
+            className="wallet-modal__list__item"
+            onClick={() => handleLogin(wallet.name)}
+          >
+            <font className="font-size-14">{wallet.name}</font>
+            <img src={wallet.icon} alt={wallet.name} />
+          </div>
+        ))}
+      </Modal>
+    </>
+  )
 }
 
+export default WalletConnect
+  );
+}
 export default ConnectWallet
