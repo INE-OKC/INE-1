@@ -15,7 +15,7 @@ import { TorusWalletConnectorPlugin } from "@web3auth/torus-wallet-connector-plu
 import RPC from "./evm";
 import { APP_CONSTANTS } from "./constants";
 
-import "./App.css";
+import "./Dapp.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
