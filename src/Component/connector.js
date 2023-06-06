@@ -1,6 +1,6 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector';
-import { BscConnector } from '@binance-chain/bsc-connector';
+//import { BscConnector } from '@binance-chain/bsc-connector';
 import {Buffer} from 'buffer';
 Buffer.from('anything','base64');
 
