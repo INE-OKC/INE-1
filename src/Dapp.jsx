@@ -21,7 +21,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const clientId = APP_CONSTANTS.CLIENT_ID; 
 
-function App() {
+function Dapp() {
   const [web3auth, setWeb3auth] = useState(null);
   const [provider, setProvider] = useState(null);
   const [posts, setposts] = useState(null);
@@ -306,4 +306,4 @@ function App() {
   );
 }
 
-export default App;
+export default Dapp;
