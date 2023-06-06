@@ -15,9 +15,6 @@ import { injected, walletconnector, bsc } from './connector'
 import {Buffer} from 'buffer';
 Buffer.from('anything','base64');
 
-function ConnectWallet() {
-  return (
-
 
 const Cancel = '../assets/image/cancel.svg'
 
@@ -160,7 +157,9 @@ const WalletConnect = () => {
   )
 }
 
-export default WalletConnect
-  );
+//export default WalletConnect
+function ConnectWallet() {
+  return ( WalletConnect
+);
 }
 export default ConnectWallet
