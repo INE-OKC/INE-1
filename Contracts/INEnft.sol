@@ -32,7 +32,7 @@ abstract contract PriceOFMATICTOUSD {
     }
 }
 
-contract HomeWorks is ERC721Enumerable, PriceOFMATICTOUSD, Ownable {
+contract INEnft is ERC721Enumerable, PriceOFMATICTOUSD, Ownable {
     using Strings for uint256;
 
     string baseURI;
